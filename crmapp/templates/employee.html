@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-2 pt-4 mb-5 pb-5">
+    <div class="text-center pt-2 pb-5">
+        <div class="container">
+            <h2 class="h2 text-uppercase">Companies List </h2>
+            <p class="lead">This is a table showing list of companies</p>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <div class="table-responsive-sm text-center">
+
+            <table id="dtBasicExample" class="table table-striped table-sm">
+              <thead>
+                <tr class="primary-color-dark text-white">
+                    <th scope="col">Firstname</th>
+                    <th scope="col">LastName </th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Company</th>
+                </tr>
+              </thead>
+              <tbody>
+                  {% for employee in employees %}
+
+                <tr>
+                  <!-- <th scope="row">1</th> -->
+                      <td>{{employee.firstname}}</td>
+                      <td>{{employee.lastname}}</td>
+                      <td>{{employee.email}}</td>
+                      <td>{{employee.phone}}</td>
+                      <td>{{employee.company}} <img src="{{employee.company.logo.url}}" alt="{{employee.company.name}} logo" class="img-responsive pl-2 ml-2" height="50px" width="70px"></td>
+                </tr>
+                {% endfor %}
+
+              </tbody>
+            </table>
+
+          </div>
+    </div>
+
+
+</div>
+
+{% endblock %}
