@@ -7,11 +7,6 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name= 'index'),
-    path('search', views.search_profiles, name= 'search_results'),
-    path('accounts/profile/', views.user_profiles, name='profile'),
-    path('profile/<str:username>', views.get_profile, name='profile_results'),
-    path('chat/<username>', views.chating, name='chat'),
-
     
 ]
 
