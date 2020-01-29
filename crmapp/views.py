@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect
 from django.http import HttpResponse, Http404
 import datetime as dt
 from .models import *
+from .forms import RegisterForm
 
 
 
@@ -14,3 +15,18 @@ def index(request):
     
     return render(request, 'index.html', {"date": date, "companies":companies})
 
+
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username=form.cleaned_data['username']
+            receiver=form.cleaned_data['email']
+            
+            return redirect('/')
+        
+    else:
+        form = RegisterForm()
+    return render(request, 'registration/registration_form.html', {'form':form})
+    
