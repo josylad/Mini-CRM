@@ -59,6 +59,10 @@ class Employee(models.Model):
 
     def delete_employee(self):
         self.delete()
+    @classmethod
+    def get_allemployee(cls):
+        employee = cls.objects.all()
+        return employee
     
     def __str__(self):
         return f"{self.firstname}, {self.lastname}, {self.email}"

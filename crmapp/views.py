@@ -16,6 +16,12 @@ def index(request):
     return render(request, 'index.html', {"date": date, "companies":companies})
 
 
+def employee(request):
+    employees = Employee.get_allemployee()
+    
+    return render(request, 'employee.html', {"employees":employees})
+
+
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
